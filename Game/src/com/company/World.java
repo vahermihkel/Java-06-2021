@@ -45,9 +45,9 @@ public class World {
     }
 
     private char getPlayerSymbol(int y, int x, char symbol) {
-        for (Character p: this.characters) {
-            if (p.getxCoord() == x && p.getyCoord() == y)  {
-                symbol = p.getSymbol();
+        for (Character c: this.characters) {
+            if (c.getxCoord() == x && c.getyCoord() == y)  {
+                symbol = c.getSymbol();
                 break;
             }
         }
