@@ -6,22 +6,36 @@ import java.util.Scanner;
 public class Game {
 
     public static void main(String[] args) {
-        int worldHeight = 6;
-        int worldWidth = 10;
+        int worldHeight = 4;
+        int worldWidth = 4;
 
         World world = new World(worldHeight, worldWidth); // constructor, uus instants
 
 
-        Player player = new Player(5,5);
-        Enemy enemy = new Enemy(3,3);
+        Player player = new Player(world);
+        // maailm lisa player
+        world.addCharacter(player);
+        Enemy enemy = new Enemy(world);
+        // maailm lisa enemy
+        world.addCharacter(enemy);
 
-        world.setCharacters(Arrays.asList(player, enemy));
+        QuestMaster questMaster = new QuestMaster(world);
+        world.addCharacter(questMaster);
+
+//        world.setCharacters(Arrays.asList(player, enemy));
 
         world.printMap();
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         while (!input.equals("end")) {
-            player.move(input, worldHeight, worldWidth);
+            player.move(input, world);
+            if (player.xCoord == enemy.xCoord && player.yCoord == enemy.yCoord) {
+                enemy.setVisible(false);
+                enemy.randomiseCoordinates(world);
+            }
+            if (player.xCoord == questMaster.xCoord && player.yCoord == questMaster.yCoord) {
+                enemy.setVisible(true);
+            }
             world.printMap();
             input = scanner.nextLine();
         }

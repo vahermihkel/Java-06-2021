@@ -13,8 +13,20 @@ public class World {
         this.width = width;
     }
 
-    public void setCharacters(List<Character> characters) {
-        this.characters = characters;
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+
+    public void addCharacter(Character character) {
+        this.characters.add(character);
     }
 
     public void printMap() {
@@ -46,7 +58,7 @@ public class World {
 
     private char getPlayerSymbol(int y, int x, char symbol) {
         for (Character c: this.characters) {
-            if (c.getxCoord() == x && c.getyCoord() == y)  {
+            if (c.getxCoord() == x && c.getyCoord() == y && c.isVisible())  {
                 symbol = c.getSymbol();
                 break;
             }
