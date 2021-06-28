@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,17 @@ public class Character {
 
     private void checkUniqueCoordinaates(World world) {
         List<Character> characters = world.getCharacters();
-        List<Character> allCharactersButMyself = characters.stream().filter(e->e.symbol != this.symbol).collect(Collectors.toList());
+
+        List<Character> allCharactersButMyself = characters.stream()
+                        .filter(character->character.symbol != this.symbol)
+                        .collect(Collectors.toList());
+
+//        List<Character> allCharactersButMyself2 = new ArrayList<>();
+//        for (int i = 0; i < characters.size(); i++) {
+//            if (characters.get(i).symbol != this.symbol) {
+//                allCharactersButMyself2.add(characters.get(i));
+//            }
+//        }
         for (Character character: allCharactersButMyself) {
             if (character.xCoord == this.xCoord && character.yCoord == this.yCoord) {
                 randomiseCoordinates(world);

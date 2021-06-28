@@ -6,6 +6,7 @@ public class Player extends Character {
 
     public Player(World world) {
         super(world, 'X');
+        this.health = 10.0;
     }
 
     public void move(String input, World world) {
@@ -46,5 +47,13 @@ public class Player extends Character {
                 }
                 break;
         }
+    }
+
+    public void takeHealth() {
+        this.health--;
+    }
+
+    public double getHealth() {
+        return health;
     }
 }

@@ -1,9 +1,14 @@
 package com.company;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
+
+    // DEBUGGIMINE
+    // Streamid koos Itemitega (kasutuskorrad vähenevad, findfirst)
+    // Interfaced - seome kokku sarnaste funktsionaalsustega klassid
+    // Thread'd (kellaaeg jooksma - enam ei liigu kood alati ülevalt alla)
+    // Map - list, mis omab võtit ja väärtust - tapetud vaenlased ja nende arv
 
     public static void main(String[] args) {
         int worldHeight = 4;
@@ -27,17 +32,22 @@ public class Game {
         world.printMap();
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        while (!input.equals("end")) {
-            player.move(input, world);
-            if (player.xCoord == enemy.xCoord && player.yCoord == enemy.yCoord) {
-                enemy.setVisible(false);
-                enemy.randomiseCoordinates(world);
+        try {
+            while (!input.equals("end")) {
+                player.move(input, world);
+                if (player.xCoord == enemy.xCoord && player.yCoord == enemy.yCoord && enemy.isVisible) {
+                    GameController.getFightInput(world, player, enemy, scanner);
+                }
+                if (player.xCoord == questMaster.xCoord && player.yCoord == questMaster.yCoord) {
+                    enemy.setVisible(true);
+                }
+                world.printMap();
+                input = scanner.nextLine();
             }
-            if (player.xCoord == questMaster.xCoord && player.yCoord == questMaster.yCoord) {
-                enemy.setVisible(true);
-            }
-            world.printMap();
-            input = scanner.nextLine();
+        } catch (GameOverException e) {
+            System.out.println("Sisestasid liiga palju valesti, mäng läbi!");
+            input = "end";
         }
     }
+
 }
