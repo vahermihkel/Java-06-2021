@@ -1,12 +1,24 @@
-package com.company;
+package com.company.character;
+
+import com.company.World;
+import com.company.item.Item;
+
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class Player extends Character {
     private Direction direction;
     private double health;
+    private List<Item> items = new ArrayList<>();
 
     public Player(World world) {
         super(world, 'X');
         this.health = 10.0;
+    }
+
+    public void addItem(Item item) {
+        this.items.add(item);
     }
 
     public void move(String input, World world) {

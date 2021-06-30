@@ -1,10 +1,12 @@
-package com.company;
+package com.company.character;
 
-import java.util.ArrayList;
+import com.company.World;
+import com.company.WorldObject;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Character {
+public class Character implements WorldObject {
     protected int xCoord;
     protected int yCoord;
     protected char symbol;
