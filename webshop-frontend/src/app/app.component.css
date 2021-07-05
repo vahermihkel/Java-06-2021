@@ -1,0 +1,16 @@
+.pealkiri {
+  color: blue;
+  background-color: rgb(83, 139, 66);
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  border: 1px dotted black;
+  border-radius: 10px;
+}
+
+/* #pealkiri {
+  color: blue;
+  background-color: azure;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  border: 1px dotted black;
+}*/
