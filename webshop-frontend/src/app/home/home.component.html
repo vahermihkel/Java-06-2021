@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div class="product" *ngFor="let product of products">
+  <div class="title">{{product.title}}</div>
+  <div class="image">{{product.imgSrc}}</div>
+  <div class="price">{{product.price}}</div>
+  <div class="category">{{product.category}}</div>
+</div>
