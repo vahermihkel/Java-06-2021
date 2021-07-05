@@ -5,6 +5,7 @@ import com.company.item.Item;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 
 public class Player extends Character {
@@ -17,8 +18,31 @@ public class Player extends Character {
         this.health = 10.0;
     }
 
+    public List<Item> getItems() {
+        return items.stream()
+                .filter(item -> item.getDurability() > 0)
+                .collect(Collectors.toList());
+    }
+
+    public void showItems() {
+        this.items = getItems();
+        for (int i = 0; i < items.size(); i++) {
+            System.out.println(
+                    i+1 + ": " + items.get(i).getClass().getName() +
+                            ", tugevusega: " + items.get(i).getStrength() +
+                            ", kasutuskordi: " + items.get(i).getDurability());
+        }
+    }
+
     public void addItem(Item item) {
-        this.items.add(item);
+        if (items.contains(item)) {
+            this.items.stream()
+                    .filter(i -> i.getStrength() == item.getStrength())
+                    .findFirst()
+                    .ifPresent(Item::increaseDurability);
+        } else {
+            this.items.add(item);
+        }
     }
 
     public void move(String input, World world) {

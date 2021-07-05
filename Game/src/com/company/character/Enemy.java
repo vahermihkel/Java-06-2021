@@ -17,7 +17,34 @@ public class Enemy extends Character {
     }
 
     public void resurrect() {
-        this.health = 2;
+        enemyType = EnemyType.getRandomEnemyType();
+        this.healthbyCharacterType();
+    }
+
+    private void healthbyCharacterType() {
+        switch (enemyType) {
+            case RAT:
+                health = (int) (Math.random() * ( 2 ) + 1 );
+                break;
+            case CAT:
+                health = (int) (Math.random() * ( 3 ) + 1 );
+                break;
+            case DOG:
+                health = (int) (Math.random() * ( 4 ) + 1 );
+                break;
+            case LION:
+                health = (int) (Math.random() * ( 5 ) + 1 );
+                break;
+            case ORC:
+                health = (int) (Math.random() * ( 6 ) + 1 );
+                break;
+            case WIZARD:
+                health = (int) (Math.random() * ( 7 ) + 1 );
+                break;
+            case DRAGON:
+                health = (int) (Math.random() * ( 8 ) + 1 );
+                break;
+        }
     }
 
     public EnemyType getEnemyType() {

@@ -1,7 +1,7 @@
 package com.company.character;
 
 public enum EnemyType {
-    RAT, CAT, DOG, LION, DRAGON;
+    RAT, CAT, DOG, LION, ORC, WIZARD, DRAGON;
 
     static EnemyType getRandomEnemyType() {
 //        values() ----- [RAT, CAT, DOG, LION, DRAGON]
