@@ -1,1 +1,16 @@
-<p>add-product works!</p>
+<!-- event binding -->
+<!-- template-driven form (ngForm) ------ muutmisel kasutame reactive-form (FormGroup) -->
+<form (ngSubmit)="onAddProduct(addProductForm)" #addProductForm="ngForm">
+  <label for="">Picture url</label><br>
+  <input ngModel name="imgSrc" type="text" required><br>
+  <label for="">Title</label><br>
+  <input ngModel name="title" type="text" required><br>
+  <label for="">Price</label><br>
+  <input ngModel name="price" type="text" required><br>
+  <label for="">Category</label><br>
+  <input ngModel name="category" type="text" required><br>
+  <button [disabled]="addProductForm.invalid">Add product</button>
+  <!-- property binding -->
+</form>
+
+<!-- <button (click)="onAddProduct()">Lisa toode</button> -->

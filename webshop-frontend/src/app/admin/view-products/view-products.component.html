@@ -1,1 +1,5 @@
-<p>view-products works!</p>
+<div class="product" *ngFor="let product of products">
+  {{product}}
+  <button (click)="onDeleteProduct()">X</button>
+  <button (click)="onEditProduct()">EDIT</button>
+</div>

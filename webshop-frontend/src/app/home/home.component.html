@@ -1,6 +1,14 @@
-<div class="product" *ngFor="let product of products">
-  <div class="title">{{product.title}}</div>
-  <div class="image">{{product.imgSrc}}</div>
-  <div class="price">{{product.price}}</div>
-  <div class="category">{{product.category}}</div>
+<!-- htmli enda direktiivid: class="" id=""
+Angular: *ngFor="", routerLink="", *ngIf=""
+
+-->
+<div class="products">
+  <div class="product" *ngFor="let product of products">
+    <div class="title">{{product.title}}</div>
+    <img src="{{product.imgSrc}}" alt="">
+    <div class="price">{{product.price}}</div>
+    <div class="category">{{product.category}}</div>
+  </div>
 </div>
+
+<!-- <div (click)="addProduct()">LISA TOODE</div> -->

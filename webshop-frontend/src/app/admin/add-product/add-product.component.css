@@ -1,0 +1,13 @@
+form {
+  text-align: center;
+  margin-top: 5%  ;
+}
+
+button:disabled {
+  background-color: rgb(235, 231, 231);
+}
+
+button:disabled:hover {
+  background-color: rgb(235, 231, 231);
+  cursor: default;
+}
