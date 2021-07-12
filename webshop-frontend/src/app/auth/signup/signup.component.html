@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSignup(signupForm)" #signupForm="ngForm">
+  <label for="">Username</label><br>
+  <input ngModel name="username" type="text" required><br>
+  <label for="">Password</label><br>
+  <input ngModel name="password" type="password" required><br>
+  <label for="">Confirm password</label><br>
+  <input ngModel name="confirm" type="password" required><br>
+  <button [disabled]="signupForm.invalid">Login</button>
+</form>
+
+<div>{{ error }}</div>

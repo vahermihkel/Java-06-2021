@@ -20,8 +20,9 @@ export class ViewProductsComponent implements OnInit {
     this.products = this.productService.products;
   }
 
-  onDeleteProduct() {
+  onDeleteProduct(i: number) {
       console.log("KUSTUTAN TOOTE");
+      this.productService.products.splice(i,1);
   }
 
   onEditProduct() {

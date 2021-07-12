@@ -3,11 +3,15 @@ Angular: *ngFor="", routerLink="", *ngIf=""
 
 -->
 <div class="products">
-  <div class="product" *ngFor="let product of products">
-    <div class="title">{{product.title}}</div>
-    <img src="{{product.imgSrc}}" alt="">
-    <div class="price">{{product.price}}</div>
-    <div class="category">{{product.category}}</div>
+  <!-- [routerLink]="['view',i]" -->
+  <div class="product" *ngFor="let product of products; let i = index">
+    <div routerLink="view/{{i}}">
+      <div class="title">{{product.title}}</div>
+      <img src="{{product.imgSrc}}" alt="">
+      <div class="price">{{product.price}}</div>
+      <div class="category">{{product.category}}</div>
+    </div>
+    <button (click)="onAddToCart(product)">Add to cart</button>
   </div>
 </div>
 

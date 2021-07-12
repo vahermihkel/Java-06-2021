@@ -1,1 +1,8 @@
-<p>cart works!</p>
+<div *ngFor="let product of productsInCart">
+  <div>{{ product.title }}</div>
+  <div>{{ product.price }}</div>
+  <img src="{{ product.imgSrc }}" alt="">
+</div>
+
+<button *ngIf="productsInCart.length > 0" (click)="onProceedToCheckout()">PROCEED TO CHECKOUT</button>
+<div *ngIf="productsInCart.length == 0">Ostukorv on tühi</div>

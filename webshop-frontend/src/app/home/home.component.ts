@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
+import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 // relatiivne teekond - alustan siit kohast ja liigun mööda kaustu alates siit
 // absoluutne teekond - alustan src-st ehk rootist ja liigun mööda kaustu alates sealt
@@ -17,8 +18,10 @@ import { ProductService } from '../services/product.service';
 export class HomeComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) { }
-
+  constructor(private productService: ProductService,
+    private cartService: CartService) { }
+  
+  // lifeCycle
   ngOnInit(): void {
     this.products = this.productService.products;
     // vasakul pool on tühi massiiv
@@ -32,4 +35,9 @@ export class HomeComponent implements OnInit {
   //   let lisatavToode = {imgSrc: "www.ee", title: "Toode1", price: 1, category: "blac"};
   //   this.products.push(lisatavToode);
   // }
+
+  onAddToCart(product: Product) {
+    this.cartService.productsInCart.push(product);
+  }
+  
 }
