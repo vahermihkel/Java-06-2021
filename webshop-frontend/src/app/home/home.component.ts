@@ -23,7 +23,10 @@ export class HomeComponent implements OnInit {
   
   // lifeCycle
   ngOnInit(): void {
-    this.products = this.productService.products;
+    this.productService.getProducts().subscribe(productsFromBackend => {
+      this.products = productsFromBackend;
+      console.log(this.products);
+    });
     // vasakul pool on tühi massiiv
     // paremal pool on service sees asuv pikk massiiivirodu [{},{}]
     // onInit läheb käima sel hetkel kui kasutaja vajutab et tuleb siia componendi sisse

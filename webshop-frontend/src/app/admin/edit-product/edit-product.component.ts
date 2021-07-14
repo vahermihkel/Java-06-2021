@@ -22,7 +22,7 @@ export class EditProductComponent implements OnInit {
     let productId = this.route.snapshot.paramMap.get("productId");
     if (productId != null) {
       this.id = Number(productId);
-      this.product = this.productService.products[this.id];
+      this.product = this.productService.products[this.id]; // this.productService.getOneProduct(id);
 
       this.editProductForm = new FormGroup({
         imgSrc: new FormControl(this.product.imgSrc),
@@ -40,7 +40,7 @@ export class EditProductComponent implements OnInit {
       this.editProductForm.value.price,
       this.editProductForm.value.category
     );
-    this.productService.products[this.id] = newProduct;
+    this.productService.products[this.id] = newProduct; // this.productService.editProduct(id, newProduct); ( this.products[id] = newProduct )
     this.router.navigateByUrl("/admin/view-products");
   }
 

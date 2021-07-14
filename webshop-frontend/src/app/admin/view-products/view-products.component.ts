@@ -21,11 +21,6 @@ export class ViewProductsComponent implements OnInit {
   }
 
   onDeleteProduct(i: number) {
-      console.log("KUSTUTAN TOOTE");
       this.productService.products.splice(i,1);
-  }
-
-  onEditProduct() {
-    console.log("MUUDAN TOODET");
   }
 }
