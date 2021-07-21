@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ViewComponent implements OnInit {
   id!: number;
   product!: Product;
+  isLoading = true;
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService) { }
@@ -19,8 +20,18 @@ export class ViewComponent implements OnInit {
     let productId = this.route.snapshot.paramMap.get("productId");
     if (productId != null) {
       this.id = Number(productId);
-      this.product = this.productService.products[this.id];
+      // this.productService.getOneProduct(this.id).subscribe(productFromBackend=>{
+      //   this.product = productFromBackend;
+      // });
+      this.productService.getOneProduct(this.id).subscribe(productFromBackend=>{
+        this.product = productFromBackend;
+      });
     }
+
+    // setTimeout(()=>{this.isLoading=false},2000);
+
+    // console.log(this.product);
+    // console.log("SIIN KUVATAKSE HTMLs VÄÄRTUST");
   }
 
 }

@@ -1,7 +1,9 @@
-<div class="product" *ngFor="let product of products; let i = index">
+<h2>{{ error }}</h2>
+
+<div class="product" *ngFor="let product of products">
   <div>{{product.title}}</div>
-  <button (click)="onDeleteProduct(i)">X</button>
-  <button routerLink="/admin/edit-product/{{i}}">EDIT</button>
+  <button (click)="onDeleteProduct(product.id)">X</button>
+  <button routerLink="/admin/edit-product/{{product.id}}">EDIT</button>
 </div>
 
 <!-- for(Object o: products) -->

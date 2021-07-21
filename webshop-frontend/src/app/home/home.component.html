@@ -4,8 +4,8 @@ Angular: *ngFor="", routerLink="", *ngIf=""
 -->
 <div class="products">
   <!-- [routerLink]="['view',i]" -->
-  <div class="product" *ngFor="let product of products; let i = index">
-    <div routerLink="view/{{i}}">
+  <div class="product" *ngFor="let product of products">
+    <div routerLink="view/{{product.id}}">
       <div class="title">{{product.title}}</div>
       <img src="{{product.imgSrc}}" alt="">
       <div class="price">{{product.price}}</div>

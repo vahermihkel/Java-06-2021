@@ -38,8 +38,11 @@ export class AddProductComponent implements OnInit {
         addProductForm.value.title,
         addProductForm.value.price,
         addProductForm.value.category );
-        this.productService.products.push(newProduct);
-        addProductForm.reset();
+        // this.productService.products.push(newProduct);
+        this.productService.addProduct(newProduct).subscribe(()=>{
+          addProductForm.reset();
+        });
+        
       }
   }
 

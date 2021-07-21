@@ -35,12 +35,13 @@ public class ProductController {
     }
 
     @GetMapping("item/{id}")
-    public Optional<Product> getOneProduct(@PathVariable Long id) {
+    public Optional<Product> getOneProduct(@PathVariable Long id) throws InterruptedException {
+        Thread.sleep(2000);
         return productService.getOneProduct(id);
     }
 
 //    id ära võtta
-    @PostMapping("item-edit/{id}")
+    @PostMapping("edit-item/{id}")
     public void getOneProduct(@RequestBody Product product) {
         productService.editProduct(product);
     }

@@ -1,7 +1,7 @@
 <!-- a-form ja tab -->
 <!-- kustutan #form="ngForm" -->
 <!-- a-formGroup -->
-<form (ngSubmit)="onEditProduct()" [formGroup]="editProductForm">
+<form *ngIf="product;else loadingTemplate" (ngSubmit)="onEditProduct()" [formGroup]="editProductForm">
   <label for="">Picture url</label><br>
   <input formControlName="imgSrc" type="text" required><br>
   <label for="">Title</label><br>
@@ -12,6 +12,9 @@
   <input formControlName="category" type="text" required><br>
   <button [disabled]="editProductForm.invalid">Edit product</button>
 </form>
+<ng-template #loadingTemplate>
+  <app-spinner></app-spinner>
+</ng-template>
 
 
 <!-- app.module.ts failis peaks lisama ReactiveFormsModule -->

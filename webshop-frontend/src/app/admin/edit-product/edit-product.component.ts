@@ -22,13 +22,16 @@ export class EditProductComponent implements OnInit {
     let productId = this.route.snapshot.paramMap.get("productId");
     if (productId != null) {
       this.id = Number(productId);
-      this.product = this.productService.products[this.id]; // this.productService.getOneProduct(id);
-
-      this.editProductForm = new FormGroup({
-        imgSrc: new FormControl(this.product.imgSrc),
-        title: new FormControl(this.product.title),
-        price: new FormControl(this.product.price),
-        category: new FormControl(this.product.category)
+      // this.product = this.productService.products[this.id]; // this.productService.getOneProduct(id);
+      this.productService.getOneProduct(this.id).subscribe(productFromBackend=>{
+        this.product = productFromBackend;
+        this.editProductForm = new FormGroup({
+          id: new FormControl(this.product.id),
+          imgSrc: new FormControl(this.product.imgSrc),
+          title: new FormControl(this.product.title),
+          price: new FormControl(this.product.price),
+          category: new FormControl(this.product.category)
+        })
       })
     }
   }
@@ -38,10 +41,13 @@ export class EditProductComponent implements OnInit {
       this.editProductForm.value.imgSrc,
       this.editProductForm.value.title,
       this.editProductForm.value.price,
-      this.editProductForm.value.category
+      this.editProductForm.value.category,
+      this.editProductForm.value.id
     );
-    this.productService.products[this.id] = newProduct; // this.productService.editProduct(id, newProduct); ( this.products[id] = newProduct )
-    this.router.navigateByUrl("/admin/view-products");
+    // this.productService.products[this.id] = newProduct; // this.productService.editProduct(id, newProduct); ( this.products[id] = newProduct )
+    this.productService.editProduct(this.id, newProduct).subscribe(()=>{
+      this.router.navigateByUrl("/admin/view-products");
+    });
   }
 
 }

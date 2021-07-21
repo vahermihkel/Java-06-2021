@@ -1,2 +1,12 @@
-<div>{{ product.title }}</div>
-<img src="{{ product.imgSrc }}" alt="">
+<div *ngIf="product;else loadingTemplate">
+    <div>{{ product.title }}</div>
+    <img src="{{ product.imgSrc }}" alt="">
+
+    {{ product | json}}
+</div>
+<ng-template #loadingTemplate>
+  <app-spinner></app-spinner>
+</ng-template>
+<!-- <ng-template #notFoundTemplate>
+  <div>Valitud toodet ei leitud!</div>
+</ng-template> -->

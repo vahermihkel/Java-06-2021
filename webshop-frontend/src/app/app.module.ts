@@ -15,6 +15,7 @@ import { ViewComponent } from './home/view/view.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     ViewComponent,
     AdminHomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
