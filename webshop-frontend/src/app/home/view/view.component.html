@@ -1,11 +1,14 @@
+<div *ngIf="error">{{ error }}</div>
+
 <div *ngIf="product;else loadingTemplate">
     <div>{{ product.title }}</div>
-    <img src="{{ product.imgSrc }}" alt="">
+    <!-- <img src="{{ product.imgSrc }}" alt=""> -->
+    <div>{{ product.imgSrc }}</div>
 
     {{ product | json}}
 </div>
 <ng-template #loadingTemplate>
-  <app-spinner></app-spinner>
+  <app-spinner *ngIf="isLoading"></app-spinner>
 </ng-template>
 <!-- <ng-template #notFoundTemplate>
   <div>Valitud toodet ei leitud!</div>

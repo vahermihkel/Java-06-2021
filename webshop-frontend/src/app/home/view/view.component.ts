@@ -11,7 +11,8 @@ import { ProductService } from 'src/app/services/product.service';
 export class ViewComponent implements OnInit {
   id!: number;
   product!: Product;
-  isLoading = true;
+  isLoading = false;
+  error!: string;
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService) { }
@@ -23,9 +24,17 @@ export class ViewComponent implements OnInit {
       // this.productService.getOneProduct(this.id).subscribe(productFromBackend=>{
       //   this.product = productFromBackend;
       // });
-      this.productService.getOneProduct(this.id).subscribe(productFromBackend=>{
-        this.product = productFromBackend;
-      });
+      this.isLoading = true;
+      this.productService.getOneProduct(this.id).subscribe(
+        productFromBackend=>{
+          this.product = productFromBackend;
+          this.isLoading = false;
+        }, 
+        errorRes => { 
+          console.log(errorRes)
+          this.error = errorRes;
+          this.isLoading = false;
+        });
     }
 
     // setTimeout(()=>{this.isLoading=false},2000);
